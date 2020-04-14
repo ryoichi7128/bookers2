@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bookers2</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+  <header class="navbar-inverse">
+  <!-- navbar navbar-fixed-top  -->
+
+  <div class="container">
+
+    <nav class="nav navbar-nav navbar-left">
+
+    <span>Bookers</span>
+
+    </nav>
+
+  <nav>
+
+    <ul class="nav navbar-nav navbar-right">
+
+      <% if user_signed_in? %>
+
+      <li class="">
+        <%= link_to user_path(current_user.id) do %>
+        <span class= "glyphicon glyphicon-home home" > Home</span>
+        <% end %>
+      </li>
+
+      <li class="">
+        <%= link_to users_path do %>
+        <span class= "glyphicon glyphicon-user users" > Users</span>
+        <% end %>
+      </li>
+
+      <li class="">
+        <%= link_to books_path do %>
+        <span class= "glyphicon glyphicon-book books" > Books</span>
+        <% end %>
+      </li>
+
+      <li class="">
+        <%= link_to destroy_user_session_path, method: :delete do %>
+        <span class= "glyphicon glyphicon-log-out logout" > logout</span>
+        <% end %>
+      </li>
+
+      <% else %>
+
+      <li class="">
+        <%= link_to root_path do %>
+        <span class= "glyphicon glyphicon-home home" > Home</span>
+        <% end %>
+      </li>
+
+      <li class="">
+        <%= link_to home_about_path do %>
+        <span class= "glyphicon glyphicon-link about" > About</span>
+        <% end %>
+      </li>
+
+      <li class="">
+        <%= link_to new_user_registration_path do %>
+        <span class= "glyphicon glyphicon-edit sign_up" > Sign up</span>
+        <% end %>
+      </li>
+
+      <li class="">
+        <%= link_to new_user_session_path do %>
+        <span class= "glyphicon glyphicon-log-in sign_in" > Login</span>
+        <% end %>
+      </li>
+
+      <% end %>
+
+
+</ul>
+</nav>
+
+</div>
+</header>
+
+    <%= yield %>
+  </body>
+</html>
